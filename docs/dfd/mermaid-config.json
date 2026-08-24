@@ -1,0 +1,26 @@
+{
+  "theme": "base",
+  "themeVariables": {
+    "fontFamily": "Tahoma, Sarabun, sans-serif",
+    "fontSize": "14px",
+    "primaryColor": "#dbeafe",
+    "primaryTextColor": "#1e3a8a",
+    "primaryBorderColor": "#1d4ed8",
+    "secondaryColor": "#f8fafc",
+    "secondaryTextColor": "#334155",
+    "secondaryBorderColor": "#334155",
+    "tertiaryColor": "#fff7ed",
+    "tertiaryTextColor": "#9a3412",
+    "tertiaryBorderColor": "#c2410c",
+    "lineColor": "#475569",
+    "edgeLabelBackground": "#ffffff"
+  },
+  "flowchart": {
+    "htmlLabels": true,
+    "curve": "basis",
+    "padding": 24,
+    "nodeSpacing": 50,
+    "rankSpacing": 60,
+    "diagramPadding": 20
+  }
+}

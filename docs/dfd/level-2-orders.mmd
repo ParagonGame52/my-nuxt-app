@@ -1,0 +1,40 @@
+---
+title: "DFD Level 2 — 3.0 Orders"
+---
+flowchart TB
+    Customer["ลูกค้า"]
+    Admin["แอดมิน"]
+    P31(("3.1<br/>ตรวจตะกร้า/สต็อก"))
+    P32(("3.2<br/>คำนวณราคา"))
+    P33(("3.3<br/>ชำระ Wallet"))
+    P34(("3.4<br/>ชำระ QR"))
+    P35(("3.5<br/>อนุมัติออเดอร์"))
+    D1[("D1 : users")]
+    D2[("D2 : products")]
+    D3[("D3 : cart_items")]
+    D4[("D4 : orders")]
+    D7[("D7 : promotions")]
+
+    Customer -->|"คำสั่งซื้อ"| P31
+    P31 -->|"ข้อมูลตะกร้า"| D3
+    P31 -->|"ข้อมูลสต็อก"| D2
+    P31 -->|"รายการสินค้า"| P32
+    P32 -->|"ข้อมูลโปร"| D7
+    P32 -->|"ยอดชำระ"| P33
+    P32 -->|"ยอดชำระ"| P34
+    P33 -->|"ยอดเงิน/แต้ม"| D1
+    P33 -->|"ข้อมูลออเดอร์"| D4
+    P33 -->|"ข้อมูลสต็อก"| D2
+    Customer -->|"สลิปชำระ"| P34
+    P34 -->|"ข้อมูลออเดอร์"| D4
+    Admin -->|"คำสั่งอนุมัติ"| P35
+    P35 -->|"สถานะออเดอร์"| D4
+    P35 -->|"ข้อมูลแต้ม"| D1
+    P35 -->|"ผลอนุมัติ"| Admin
+
+    classDef entity fill:#f8fafc,stroke:#334155,stroke-width:2px
+    classDef process fill:#dbeafe,stroke:#1d4ed8,stroke-width:2px
+    classDef store fill:#fff7ed,stroke:#c2410c,stroke-width:2px
+    class Customer,Admin entity
+    class P31,P32,P33,P34,P35 process
+    class D1,D2,D3,D4,D7 store

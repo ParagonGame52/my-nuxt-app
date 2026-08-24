@@ -1,0 +1,29 @@
+---
+title: "DFD Level 2 — 5.0 Gacha"
+---
+flowchart TB
+    Customer["ลูกค้า"]
+    P51(("5.1<br/>ดูตู้สุ่ม"))
+    P52(("5.2<br/>สุ่มรางวัล"))
+    P53(("5.3<br/>บันทึกผล"))
+    D6[("D6 : gacha_chests")]
+    D1[("D1 : users")]
+    D4[("D4 : orders")]
+
+    Customer -->|"รหัสตู้"| P51
+    P51 -->|"ข้อมูลตู้"| D6
+    P51 -->|"รายการตู้"| Customer
+    Customer -->|"คำขอสุ่ม"| P52
+    P52 -->|"pool รางวัล"| D6
+    P52 -->|"ยอดเงิน"| D1
+    P52 -->|"ผลสุ่ม"| P53
+    P53 -->|"stock รางวัล"| D6
+    P53 -->|"ข้อมูลออเดอร์"| D4
+    P53 -->|"ของรางวัล"| Customer
+
+    classDef entity fill:#f8fafc,stroke:#334155,stroke-width:2px
+    classDef process fill:#dbeafe,stroke:#1d4ed8,stroke-width:2px
+    classDef store fill:#fff7ed,stroke:#c2410c,stroke-width:2px
+    class Customer entity
+    class P51,P52,P53 process
+    class D6,D1,D4 store

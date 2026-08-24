@@ -1,0 +1,29 @@
+---
+title: "DFD Level 0 — Context Diagram"
+---
+flowchart LR
+    Customer["ลูกค้า"]
+    Admin["แอดมิน"]
+    System(("0<br/>ระบบ Dip Drip<br/>E-Commerce"))
+
+    Customer -->|"ข้อมูลสมาชิก"| System
+    Customer -->|"คำขอสินค้า/ตะกร้า"| System
+    Customer -->|"คำสั่งซื้อ/สลิป"| System
+    Customer -->|"คำขอเติม-ถอนเงิน"| System
+    Customer -->|"คำขอสุ่ม Gacha"| System
+    Customer -->|"รีวิว/ตั๋วสนับสนุน"| System
+
+    System -->|"ข้อมูลสินค้า/โปร/สถิติ"| Customer
+    System -->|"ผลสั่งซื้อ/ผลสุ่ม"| Customer
+    System -->|"ยอดเงิน/ประวัติ"| Customer
+    System -->|"คำตอบสนับสนุน"| Customer
+
+    Admin -->|"คำสั่งจัดการระบบ"| System
+    Admin -->|"คำขออนุมัติ"| System
+    System -->|"รายงาน/รายการรอ"| Admin
+    System -->|"สถานะออเดอร์/ผู้ใช้"| Admin
+
+    classDef entity fill:#f8fafc,stroke:#334155,stroke-width:2px,color:#0f172a
+    classDef process fill:#dbeafe,stroke:#1d4ed8,stroke-width:2px,color:#1e3a8a
+    class Customer,Admin entity
+    class System process

@@ -1,0 +1,41 @@
+---
+title: "DFD Level 2 — 8.0 Admin"
+---
+flowchart TB
+    Admin["แอดมิน"]
+    P81(("8.1<br/>จัดการสินค้า"))
+    P82(("8.2<br/>จัดการออเดอร์"))
+    P83(("8.3<br/>จัดการผู้ใช้"))
+    P84(("8.4<br/>โปร/Gacha"))
+    P85(("8.5<br/>อนุมัติเงิน"))
+    P86(("8.6<br/>รายงาน"))
+    D2[("D2 : products")]
+    D4[("D4 : orders")]
+    D1[("D1 : users")]
+    D7[("D7 : promotions")]
+    D6[("D6 : gacha_chests")]
+    D5[("D5 : topup_requests")]
+
+    Admin -->|"คำสั่งสินค้า"| P81
+    P81 -->|"ข้อมูลสินค้า"| D2
+    Admin -->|"คำสั่งออเดอร์"| P82
+    P82 -->|"ข้อมูลออเดอร์"| D4
+    P82 -->|"ข้อมูลแต้ม"| D1
+    Admin -->|"คำสั่งผู้ใช้"| P83
+    P83 -->|"ข้อมูลผู้ใช้"| D1
+    Admin -->|"คำสั่งโปร/Gacha"| P84
+    P84 -->|"ข้อมูลโปร"| D7
+    P84 -->|"ข้อมูลตู้"| D6
+    Admin -->|"คำสั่งอนุมัติ"| P85
+    P85 -->|"ข้อมูลคำขอ"| D5
+    P85 -->|"ยอดเงิน"| D1
+    Admin -->|"คำขอรายงาน"| P86
+    P86 -->|"ข้อมูลออเดอร์"| D4
+    P86 -->|"รายงาน"| Admin
+
+    classDef entity fill:#f8fafc,stroke:#334155,stroke-width:2px
+    classDef process fill:#dbeafe,stroke:#1d4ed8,stroke-width:2px
+    classDef store fill:#fff7ed,stroke:#c2410c,stroke-width:2px
+    class Admin entity
+    class P81,P82,P83,P84,P85,P86 process
+    class D2,D4,D1,D7,D6,D5 store

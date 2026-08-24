@@ -1,0 +1,26 @@
+---
+title: "DFD Level 2 — 7.0 Support"
+---
+flowchart TB
+    Customer["ลูกค้า"]
+    Admin["แอดมิน"]
+    P71(("7.1<br/>เปิดตั๋ว"))
+    P72(("7.2<br/>สนทนา"))
+    P73(("7.3<br/>ตอบกลับ"))
+    D8[("D8 : support_tickets")]
+
+    Customer -->|"ข้อมูลตั๋ว"| P71
+    P71 -->|"ข้อมูลตั๋ว"| D8
+    Customer -->|"ข้อความ/รูป"| P72
+    P72 -->|"ข้อมูลข้อความ"| D8
+    P72 -->|"ประวัติสนทนา"| Customer
+    Admin -->|"คำตอบแอดมิน"| P73
+    P73 -->|"ข้อมูลข้อความ"| D8
+    P73 -->|"คำตอบ"| Customer
+
+    classDef entity fill:#f8fafc,stroke:#334155,stroke-width:2px
+    classDef process fill:#dbeafe,stroke:#1d4ed8,stroke-width:2px
+    classDef store fill:#fff7ed,stroke:#c2410c,stroke-width:2px
+    class Customer,Admin entity
+    class P71,P72,P73 process
+    class D8 store

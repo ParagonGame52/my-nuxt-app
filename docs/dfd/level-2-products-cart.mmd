@@ -1,0 +1,28 @@
+---
+title: "DFD Level 2 — 2.0 Products & Cart"
+---
+flowchart TB
+    Customer["ลูกค้า"]
+    P21(("2.1<br/>ดูรายการสินค้า"))
+    P22(("2.2<br/>ดูรายละเอียด"))
+    P23(("2.3<br/>จัดการตะกร้า"))
+    D2[("D2 : products")]
+    D3[("D3 : cart_items")]
+
+    Customer -->|"เงื่อนไขค้นหา"| P21
+    P21 -->|"ข้อมูลสินค้า"| D2
+    P21 -->|"รายการสินค้า"| Customer
+    Customer -->|"รหัสสินค้า"| P22
+    P22 -->|"ข้อมูลสินค้า"| D2
+    P22 -->|"รายละเอียดสินค้า"| Customer
+    Customer -->|"รายการตะกร้า"| P23
+    P23 -->|"ข้อมูลสต็อก"| D2
+    P23 -->|"ข้อมูลตะกร้า"| D3
+    P23 -->|"สถานะตะกร้า"| Customer
+
+    classDef entity fill:#f8fafc,stroke:#334155,stroke-width:2px
+    classDef process fill:#dbeafe,stroke:#1d4ed8,stroke-width:2px
+    classDef store fill:#fff7ed,stroke:#c2410c,stroke-width:2px
+    class Customer entity
+    class P21,P22,P23 process
+    class D2,D3 store

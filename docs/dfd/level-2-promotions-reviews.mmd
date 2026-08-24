@@ -1,0 +1,30 @@
+---
+title: "DFD Level 2 — 6.0 Promo & Reviews"
+---
+flowchart TB
+    Customer["ลูกค้า"]
+    Admin["แอดมิน"]
+    P61(("6.1<br/>ดูโปรโมชั่น"))
+    P62(("6.2<br/>เขียนรีวิว"))
+    P63(("6.3<br/>ดู/ลบรีวิว"))
+    D7[("D7 : promotions")]
+    D4[("D4 : orders")]
+    D9[("D9 : product_reviews")]
+
+    Customer -->|"เงื่อนไขโปร"| P61
+    P61 -->|"ข้อมูลโปร"| D7
+    P61 -->|"รายการโปร"| Customer
+    Customer -->|"ข้อมูลรีวิว"| P62
+    P62 -->|"ประวัติซื้อ"| D4
+    P62 -->|"ข้อมูลรีวิว"| D9
+    Customer -->|"ข้อมูลรีวิว"| P63
+    P63 -->|"ข้อมูลรีวิว"| D9
+    P63 -->|"รายการรีวิว"| Customer
+    Admin -->|"คำสั่งลบ"| P63
+
+    classDef entity fill:#f8fafc,stroke:#334155,stroke-width:2px
+    classDef process fill:#dbeafe,stroke:#1d4ed8,stroke-width:2px
+    classDef store fill:#fff7ed,stroke:#c2410c,stroke-width:2px
+    class Customer,Admin entity
+    class P61,P62,P63 process
+    class D7,D4,D9 store
